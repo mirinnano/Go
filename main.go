@@ -5,6 +5,8 @@ import (
 	"log"
 	"strings"
 	"net/url"
+	"os"
+
 	"github.com/bwmarrin/discordgo"
 	"github.com/gocolly/colly" // Colly パッケージをインポート
 )
@@ -12,7 +14,8 @@ import (
 
 
 func main() {
-	dg, err := discordgo.New("Bot " + Token)
+	token := os.Getenv("DISCORD_TOKEN")
+	dg, err := discordgo.New("Bot " + token)
 	if err != nil {
 		log.Fatal("Error creating Discord session,", err)
 	}
